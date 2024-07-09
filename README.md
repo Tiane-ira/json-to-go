@@ -10,7 +10,8 @@
 - 支持多个tag生成
 - 粘贴时使用不带格式粘贴，避免粘贴了格式导致格式化错误
 
-欢迎贡献代码！发起pull request修复bug或开启issue讨论新的特性和改动。
+![image](https://github.com/Tiane-ira/json-to-go/assets/82498494/e9927e35-f087-4a77-9443-5ce483dd227d)
+
 
 ### 声明
 

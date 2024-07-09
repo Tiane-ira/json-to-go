@@ -8,7 +8,7 @@
 	一个将JSON转化为Go结构体的工具。
 */
 
-function jsonToGo(json, typename, flatten = true)
+function jsonToGo(json, typename, flatten = true, tags)
 {
 	let data;
 	let scope;
@@ -20,6 +20,8 @@ function jsonToGo(json, typename, flatten = true)
 	let accumulator = "";
 	let innerTabs = 0;
 	let parent = "";
+	tags = tags || "json";
+	tagsArr = tags.split(",");
 
 	try
 	{
@@ -186,20 +188,29 @@ function jsonToGo(json, typename, flatten = true)
 			appender(`${parentType} struct {\n`);
 			++innerTabs;
 			const keys = Object.keys(scope);
-			for (let i in keys)
-			{
+			for (let i in keys){
 				const keyname = getOriginalName(keys[i]);
 				indenter(innerTabs)
 				const typename = format(keyname)
 				appender(typename+" ");
 				parent = typename
 				parseScope(scope[keys[i]], depth);
-				appender(' `json:"'+keyname);
-				if (omitempty && omitempty[keys[i]] === true)
-				{
-					appender(',omitempty');
+				var tagLen = tagsArr.length;
+				for (let ti = 0; ti < tagLen; ti++) {
+					if(ti == 0){
+						append(" `");
+					}else{
+						append(" ");
+					}
+					append(`${tagsArr[ti]}:"`+keyname);
+					if(tagsArr[ti] === "json" && omitempty && omitempty[keys[i]] === true){
+						append(',omitempty');
+					}
+					append("\"")
+					if(ti === tagLen - 1){
+						append("`\n")
+					}
 				}
-				appender('"`\n');
 			}
 			indenter(--innerTabs);
 			appender("}");
@@ -217,12 +228,22 @@ function jsonToGo(json, typename, flatten = true)
 				append(typename+" ");
 				parent = typename
 				parseScope(scope[keys[i]], depth);
-				append(' `json:"'+keyname);
-				if (omitempty && omitempty[keys[i]] === true)
-				{
-					append(',omitempty');
+				var tagLen = tagsArr.length;
+				for (let ti = 0; ti < tagLen; ti++) {
+					if(ti == 0){
+						append(" `");
+					}else{
+						append(" ");
+					}
+					append(`${tagsArr[ti]}:"`+keyname);
+					if(tagsArr[ti] === "json" && omitempty && omitempty[keys[i]] === true){
+						append(',omitempty');
+					}
+					append("\"")
+					if(ti === tagLen - 1){
+						append("`\n")
+					}
 				}
-				append('"`\n');
 			}
 			indent(--tabs);
 			append("}");

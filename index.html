@@ -27,14 +27,14 @@
             <p>
                 试试转化JSON <a href="javascript:" id="sample1">SmartyStreets API</a> 或 <a href="javascript:" id="sample2">GitHub API</a> 吧。
             </p>
-            <p>
+            <!-- <p>
                 &copy; 2015 <a href="https://matt.life">Matt Holt</a> (<a href="https://twitter.com/mholt6">@mholt6</a>)
                 &bull; <a href="https://github.com/mholt/json-to-go">查看GitHub</a>
                 &bull; <a href="javascript:" id="dark">浅色主题</a>
                 <br>
                 &copy; 2019 <a href="https://github.com/hmldd">hmldd</a> 翻译
                 &bull; <a href="https://github.com/hmldd/json-to-go">中文GitHub</a>
-            </p>
+            </p> -->
         </div>
         <div>
             <img src="resources/images/json-to-go.png" id="brand">
@@ -45,7 +45,12 @@
     <tr>
         <th style="width: 45%;">JSON</th>
         <th style="width: 10%; font-size: 22px;">&#8594;</th>
-        <th style="width: 45%;">Go <label><input type="checkbox" id="inline" checked>行内类型定义</label> <span class="copy" id="copy-btn">复制到剪切板</span></th>
+        <th style="width: 45%;">Go 
+            <label><input id="tags" placeholder="tags(逗号分隔,默认json)"></label> 
+            <!-- <label><input type="checkbox" id="inline" checked>行内类型定义</label> -->
+            <span class="copy" id="trans-btn">转换</span>
+            <span class="copy" id="copy-btn">复制到剪切板</span>
+        </th>
     </tr>
 </table>
 <table>

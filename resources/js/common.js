@@ -14,7 +14,7 @@ $(function()
 			return;
 		}
 
-		let output = jsonToGo(input, "", !$('#inline').is(':checked'), false);
+		let output = jsonToGo(input, "", false, $('#tags').val().trim());
 
 		if (output.error)
 		{
@@ -151,6 +151,11 @@ $(function()
 
 			document.execCommand("Copy");
 		}
+	})
+
+	// 手动执行转换
+	$("#trans-btn").click(function() {
+		doConversion();
 	})
 });
 

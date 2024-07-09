@@ -1,14 +1,14 @@
 [<img src="https://mholt.github.io/json-to-go/resources/images/json-to-go.png" alt="JSON-to-Go JSON转化为Go结构体"></a>](https://mholt.github.io/json-to-go)
 
-将JSON转化为Go结构体。 [英文版JSON-to-Go](http://mholt.github.io/json-to-go)  [中文版JSON-to-Go](http://json-to-go.hmldd.com)
-
-这是 [curl-to-Go](https://mholt.github.io/curl-to-go) 的兄弟工具，curl-to-go可以将curl命令转化为go代码。 
+将JSON转化为Go结构体。 
 
 注意事项：
 
 - 工具有时需要做一些假设, 请再浏览一遍输出的结果。
 - 当数组中有多个对象时使用的第一个对象的结构。
 - 输出结果有缩进，但是没有进行格式化。请使用`go fmt`进行格式化！
+- 支持多个tag生成
+- 粘贴时使用不带格式粘贴，避免粘贴了格式导致格式化错误
 
 欢迎贡献代码！发起pull request修复bug或开启issue讨论新的特性和改动。
 
